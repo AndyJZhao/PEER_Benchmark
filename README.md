@@ -41,13 +41,17 @@ You may install the dependencies of TorchProtein and PEER benchmark as below.
 Generally, they work with Python 3.7/3.8 and PyTorch version >= 1.8.0.
 
 ```bash
-conda create -n protein python=3.7
-conda activate protein
+conda deactivate
+conda env remove -n protein
+conda create -n protein
 
-conda install pytorch==1.8.0 cudatoolkit=10.2 -c pytorch
-conda install scikit-learn pandas decorator ipython networkx tqdm matplotlib -y
-conda install pytorch-scatter pytorch-cluster -c pyg -c conda-forge
+conda activate protein
+conda install -y pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
+conda install -y scikit-learn pandas decorator ipython networkx tqdm matplotlib -y
+conda install -y pytorch-scatter pytorch-cluster -c pyg -c conda-forge
 pip install fair-esm transformers easydict pyyaml lmdb
+
+python -m pip install git+https://github.com/DeepGraphLearning/torchdrug/
 
 python -m pip install git+https://github.com/DeepGraphLearning/torchdrug/
 ```
